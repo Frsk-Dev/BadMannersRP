@@ -1,0 +1,121 @@
+.page {
+  padding: 80px 24px 120px;
+}
+
+.inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Page header */
+.pageHeader {
+  margin-bottom: 72px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.intro {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+}
+
+/* Section */
+.section {
+  margin-bottom: 64px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sectionNumber {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.20);
+  min-width: 24px;
+}
+
+.sectionTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+
+/* Rules */
+.ruleList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.rule {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.ruleId {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.20em;
+  color: rgba(255,255,255,0.25);
+  min-width: 52px;
+  padding-top: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ruleContent {
+  flex: 1;
+}
+
+.ruleText {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.80);
+}
+
+/* Sub-notes */
+.notes {
+  list-style: none;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.note {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.40);
+}
