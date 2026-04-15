@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { useAuth } from '../context/AuthContext'
+import SteamAuthButton from '../components/SteamAuthButton'
 import styles from './Home.module.css'
 
-const NAV_LINKS = [
+const PUBLIC_LINKS = [
   { to: '/rules', label: 'Rules' },
   { to: '/county-laws', label: 'County Laws' },
+]
+
+const AUTH_LINKS = [
+  { to: '/characters', label: 'Characters' },
 ]
 
 // Restarts every 6 hours — calculates time until next restart
@@ -31,6 +37,8 @@ function useRestartCountdown(intervalHours = 6) {
 
 export default function Home() {
   const restart = useRestartCountdown(6)
+  const { user } = useAuth()
+  const navLinks = user ? [...PUBLIC_LINKS, ...AUTH_LINKS] : PUBLIC_LINKS
 
   return (
     <div className={styles.hero}>
@@ -43,23 +51,13 @@ export default function Home() {
 
       {/* Top nav */}
       <header className={styles.nav}>
-        <span className={styles.navLogo}>
-          Bad Manners <em>Roleplay</em>
-        </span>
         <nav className={styles.navLinks}>
-          {NAV_LINKS.map(({ to, label }) => (
+          {navLinks.map(({ to, label }) => (
             <Link key={to} to={to} className={styles.navLink}>
               {label}
             </Link>
           ))}
-          <a
-            href="https://discord.gg/dAdR47B2sr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.navDiscord}
-          >
-            Discord
-          </a>
+          <SteamAuthButton />
         </nav>
       </header>
 

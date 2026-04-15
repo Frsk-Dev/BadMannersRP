@@ -1,13 +1,23 @@
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
+import SteamAuthButton from './SteamAuthButton'
 import styles from './Navbar.module.css'
 
-const links = [
+const PUBLIC_LINKS = [
   { to: '/', label: 'Home' },
   { to: '/rules', label: 'Rules' },
   { to: '/county-laws', label: 'County Laws' },
 ]
 
+const AUTH_LINKS = [
+  { to: '/characters', label: 'Characters' },
+]
+
 export default function Navbar() {
+  const { user } = useAuth()
+
+  const links = user ? [...PUBLIC_LINKS, ...AUTH_LINKS] : PUBLIC_LINKS
+
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -28,14 +38,7 @@ export default function Navbar() {
             </NavLink>
           ))}
         </nav>
-        <a
-          href="https://discord.gg/dAdR47B2sr"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.discord}
-        >
-          Join Discord
-        </a>
+        <SteamAuthButton />
       </div>
     </header>
   )

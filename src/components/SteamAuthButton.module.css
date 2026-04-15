@@ -1,0 +1,78 @@
+/* ── Sign in button ─────────────────────────────────────────── */
+.loginBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 2px;
+  color: rgba(255,255,255,0.60);
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.loginBtn:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.50);
+  background: rgba(255,255,255,0.04);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  opacity: 0.6;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s;
+}
+
+.loginBtn:hover .icon {
+  opacity: 1;
+}
+
+/* ── Logged in user ─────────────────────────────────────────── */
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+.name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.10em;
+  color: rgba(255,255,255,0.65);
+  white-space: nowrap;
+}
+
+.logout {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.30);
+  font-family: 'Lato', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.logout:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.40);
+}
