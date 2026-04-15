@@ -1,8 +1,18 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useAuth } from '../context/AuthContext'
 import SteamAuthButton from '../components/SteamAuthButton'
 import styles from './Home.module.css'
+
+const IMAGES = [
+  '/images/imagebm1.png',
+  '/images/imagebm2.png',
+  '/images/imagebm3.png',
+  '/images/imagebm4.png',
+  '/images/imagebm6.png',
+  '/images/imagebm7.png',
+  '/images/imagebm8.png',
+]
 
 const PUBLIC_LINKS = [
   { to: '/rules', label: 'Rules' },
@@ -40,11 +50,36 @@ export default function Home() {
   const { user } = useAuth()
   const navLinks = user ? [...PUBLIC_LINKS, ...AUTH_LINKS] : PUBLIC_LINKS
 
+  const [slideA, setSlideA] = useState(IMAGES[0])
+  const [slideB, setSlideB] = useState(IMAGES[1])
+  const [activeSlide, setActiveSlide] = useState('A')
+  const indexRef = useRef(1)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      indexRef.current = (indexRef.current + 1) % IMAGES.length
+      const nextImage = IMAGES[indexRef.current]
+      if (activeSlide === 'A') {
+        setSlideB(nextImage)
+        setActiveSlide('B')
+      } else {
+        setSlideA(nextImage)
+        setActiveSlide('A')
+      }
+    }, 5000)
+    return () => clearInterval(id)
+  }, [activeSlide])
+
   return (
     <div className={styles.hero}>
 
-      {/* Right image panel with diagonal mask */}
-      <div className={styles.imagePanel} aria-hidden="true" />
+      {/* Right image panel with crossfading slideshow */}
+      <div className={styles.imagePanel} aria-hidden="true">
+        <div className={`${styles.slide} ${activeSlide === 'A' ? styles.slideActive : ''}`}
+          style={{ backgroundImage: `url(${slideA})` }} />
+        <div className={`${styles.slide} ${activeSlide === 'B' ? styles.slideActive : ''}`}
+          style={{ backgroundImage: `url(${slideB})` }} />
+      </div>
 
       {/* Overlay gradients */}
       <div className={styles.overlay} aria-hidden="true" />

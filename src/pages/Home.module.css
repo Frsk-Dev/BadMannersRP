@@ -13,7 +13,6 @@
   right: 0;
   width: 62%;
   height: 100%;
-  background: url('https://picsum.photos/1200/900?grayscale') center / cover no-repeat;
   -webkit-mask-image: linear-gradient(
     108deg,
     transparent  0%,
@@ -32,6 +31,19 @@
     black        42%,
     black        100%
   );
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+
+.slideActive {
+  opacity: 1;
 }
 
 /* ── Overlay gradients ──────────────────────────────────────── */
